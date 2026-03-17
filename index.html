@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Courageous T23">
+<title>Courageous · Table 23</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0e0b06;--bg2:#181208;--bg3:#1f1810;--panel:#211a0e;--panel2:#2a2112;
+  --gold:#e8b84b;--gold2:#c99a30;--gold3:#a07820;
+  --gold-dim:rgba(232,184,75,0.12);--gold-line:rgba(232,184,75,0.22);
+  --text:#f2ece0;--text2:#d4c4a0;--text3:#a08858;--text4:#6a5030;
+  --green:#5ec87a;--green-bg:rgba(94,200,122,0.1);--green-line:rgba(94,200,122,0.3);
+  --red:#e07050;--sidebar-w:260px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,serif;font-size:16px;line-height:1.6;min-height:100vh;overflow-x:hidden;}
+.shell{display:flex;min-height:100vh;}
+
+/* SIDEBAR */
+.sidebar{width:var(--sidebar-w);flex-shrink:0;background:var(--panel);border-right:1px solid var(--gold-line);display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;z-index:200;transition:transform 0.3s cubic-bezier(.4,0,.2,1);}
+.sidebar-brand{padding:30px 22px 26px;border-bottom:1px solid var(--gold-line);text-align:center;}
+.brand-shield{width:62px;height:62px;background:linear-gradient(160deg,#c99a30 0%,#7a5518 100%);clip-path:polygon(50% 0%,100% 20%,100% 72%,50% 100%,0% 72%,0% 20%);display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 14px;filter:drop-shadow(0 4px 14px rgba(200,154,48,0.4));}
+.brand-title{font-family:'Cinzel Decorative',serif;font-size:14px;color:var(--gold);letter-spacing:2px;line-height:1.3;}
+.brand-sub{font-family:'Cinzel',serif;font-size:9px;color:var(--text3);letter-spacing:3px;margin-top:6px;text-transform:uppercase;}
+.sidebar-nav{flex:1;padding:16px 12px;display:flex;flex-direction:column;gap:4px;}
+.nav-item{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:6px;border:1px solid transparent;cursor:pointer;transition:all 0.2s;background:transparent;width:100%;text-align:left;font-family:'Cinzel',serif;font-size:11px;letter-spacing:1.5px;color:var(--text3);text-transform:uppercase;}
+.nav-item:hover{background:var(--gold-dim);color:var(--text2);border-color:var(--gold-line);}
+.nav-item.active{background:var(--gold-dim);color:var(--gold);border-color:var(--gold-line);}
+.nav-icon{font-size:17px;flex-shrink:0;}
+.sidebar-footer{padding:18px 22px;border-top:1px solid var(--gold-line);font-size:12px;color:var(--text4);font-style:italic;text-align:center;line-height:1.7;}
+
+/* CONTENT */
+.content{margin-left:var(--sidebar-w);flex:1;min-width:0;display:flex;flex-direction:column;}
+.mobile-bar{display:none;position:sticky;top:0;z-index:150;background:rgba(14,11,6,0.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--gold-line);padding:12px 18px;align-items:center;justify-content:space-between;}
+.mobile-brand{font-family:'Cinzel',serif;font-size:14px;color:var(--gold);letter-spacing:2px;}
+.hamburger{background:none;border:1px solid var(--gold-line);border-radius:4px;color:var(--gold);padding:6px 12px;font-size:16px;cursor:pointer;}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:190;}
+.overlay.visible{display:block;}
+
+/* PAGES */
+.page{display:none;}
+.page.active{display:block;animation:pageIn 0.3s ease both;}
+@keyframes pageIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+/* HOME */
+.home-hero{position:relative;min-height:500px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:80px 48px;text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(180,120,20,0.2) 0%,transparent 65%),radial-gradient(ellipse at 80% 100%,rgba(120,80,10,0.12) 0%,transparent 50%),var(--bg2);border-bottom:1px solid var(--gold-line);}
+.home-hero::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 52px,rgba(232,184,75,0.035) 52px,rgba(232,184,75,0.035) 53px),repeating-linear-gradient(90deg,transparent,transparent 52px,rgba(232,184,75,0.035) 52px,rgba(232,184,75,0.035) 53px);pointer-events:none;}
+.hero-shield-big{width:110px;height:110px;background:linear-gradient(160deg,#c99a30 0%,#5a3a08 100%);clip-path:polygon(50% 0%,100% 20%,100% 72%,50% 100%,0% 72%,0% 20%);display:flex;align-items:center;justify-content:center;font-size:44px;margin:0 auto 26px;filter:drop-shadow(0 8px 28px rgba(200,154,48,0.55));animation:shieldFloat 4s ease-in-out infinite;}
+@keyframes shieldFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.hero-title{font-family:'Cinzel Decorative',serif;font-size:clamp(26px,4vw,50px);color:var(--gold);letter-spacing:4px;line-height:1.2;margin-bottom:8px;text-shadow:0 2px 24px rgba(200,154,48,0.35);}
+.hero-table{font-family:'Cinzel',serif;font-size:13px;color:var(--text3);letter-spacing:6px;text-transform:uppercase;margin-bottom:28px;}
+.hero-verse{font-size:19px;color:var(--text2);font-style:italic;max-width:540px;margin:0 auto 10px;line-height:1.7;}
+.hero-ref{font-family:'Cinzel',serif;font-size:11px;color:var(--text3);letter-spacing:3px;}
+
+.home-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:40px;max-width:1100px;margin:0 auto;width:100%;}
+.home-card{background:var(--panel);border:1px solid var(--gold-line);border-radius:10px;padding:28px 24px;cursor:pointer;transition:all 0.25s;text-align:center;position:relative;overflow:hidden;}
+.home-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold2),transparent);opacity:0;transition:opacity 0.25s;}
+.home-card:hover{border-color:rgba(232,184,75,0.4);background:var(--panel2);transform:translateY(-4px);box-shadow:0 10px 36px rgba(0,0,0,0.45);}
+.home-card:hover::before{opacity:1;}
+.home-card-icon{font-size:38px;margin-bottom:14px;display:block;}
+.home-card-title{font-family:'Cinzel',serif;font-size:13px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.home-card-desc{font-size:14px;color:var(--text3);line-height:1.65;}
+.home-card-count{display:inline-block;margin-top:14px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;color:var(--gold2);background:var(--gold-dim);padding:4px 14px;border-radius:20px;border:1px solid var(--gold-line);}
+
+.home-upcoming{padding:0 40px 44px;max-width:1100px;margin:0 auto;width:100%;}
+.section-title{font-family:'Cinzel',serif;font-size:11px;letter-spacing:4px;color:var(--text3);text-transform:uppercase;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--gold-line);}
+.upcoming-row{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-bottom:1px solid rgba(232,184,75,0.07);}
+.upcoming-row:last-child{border-bottom:none;}
+.upcoming-dot{width:10px;height:10px;border-radius:50%;background:var(--gold2);flex-shrink:0;margin-top:7px;}
+.upcoming-dot.urgent{background:var(--red);box-shadow:0 0 8px rgba(224,112,80,0.5);}
+.upcoming-label{font-family:'Cinzel',serif;font-size:11px;color:var(--text4);letter-spacing:1px;margin-bottom:3px;}
+.upcoming-text{font-size:16px;color:var(--text2);font-weight:600;}
+
+/* PAGE HEADER */
+.page-header{padding:38px 40px 26px;border-bottom:1px solid var(--gold-line);display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.page-title{font-family:'Cinzel Decorative',serif;font-size:clamp(20px,3vw,30px);color:var(--gold);line-height:1.2;}
+.page-sub{font-size:15px;color:var(--text3);margin-top:5px;font-style:italic;}
+.page-body{padding:32px 40px;}
+
+/* MEMBERS */
+.member-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;}
+.member-card{background:var(--panel);border:1px solid var(--gold-line);border-radius:10px;padding:24px;cursor:pointer;transition:all 0.25s;position:relative;overflow:hidden;}
+.member-card::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold2);opacity:0;transition:opacity 0.25s;}
+.member-card:hover,.member-card.open{border-color:rgba(232,184,75,0.38);background:var(--panel2);box-shadow:0 6px 28px rgba(0,0,0,0.35);}
+.member-card:hover::after,.member-card.open::after{opacity:1;}
+.mc-top{display:flex;align-items:center;gap:16px;}
+.avatar{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,#8a6020,#3d2008);border:2px solid var(--gold-line);display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:15px;font-weight:700;color:var(--gold);flex-shrink:0;letter-spacing:1px;}
+.mc-name{font-size:18px;font-weight:600;color:var(--text);line-height:1.2;}
+.mc-role{font-size:13px;color:var(--text3);font-style:italic;margin-top:3px;}
+.leader-badge{display:inline-block;font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;background:var(--gold-dim);color:var(--gold);padding:2px 10px;border-radius:20px;border:1px solid var(--gold-line);text-transform:uppercase;margin-left:8px;vertical-align:middle;}
+.mc-expand{display:none;margin-top:18px;padding-top:16px;border-top:1px solid var(--gold-line);animation:fadeIn 0.2s ease;}
+.member-card.open .mc-expand{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.mc-verse{font-size:15px;color:var(--text2);font-style:italic;line-height:1.7;margin-bottom:14px;}
+.mc-details{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.mc-detail-item label{display:block;font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;color:var(--text4);text-transform:uppercase;margin-bottom:3px;}
+.mc-detail-item span{font-size:14px;color:var(--text2);}
+
+/* PRAYERS */
+.prayer-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;}
+.prayer-card{background:var(--panel);border:1px solid var(--gold-line);border-radius:10px;padding:22px;transition:border-color 0.2s;}
+.prayer-card.answered{border-color:var(--green-line);background:var(--green-bg);opacity:0.8;}
+.prayer-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;gap:10px;}
+.prayer-author{font-family:'Cinzel',serif;font-size:13px;color:var(--gold);letter-spacing:0.5px;font-weight:600;}
+.prayer-date{font-size:12px;color:var(--text4);margin-top:3px;}
+.answered-badge{font-family:'Cinzel',serif;font-size:8px;letter-spacing:1.5px;background:var(--green-bg);color:var(--green);padding:3px 10px;border-radius:20px;border:1px solid var(--green-line);white-space:nowrap;margin-top:2px;}
+.prayer-text{font-size:15px;color:var(--text2);font-style:italic;line-height:1.7;margin-bottom:16px;}
+.prayer-actions{display:flex;align-items:center;justify-content:flex-end;}
+.answer-btn{display:flex;align-items:center;gap:6px;background:transparent;border:1px solid var(--gold-line);border-radius:20px;padding:6px 16px;cursor:pointer;color:var(--text3);font-family:'Cinzel',serif;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;transition:all 0.2s;}
+.answer-btn:hover{border-color:var(--green-line);color:var(--green);}
+.answer-btn.answered{border-color:var(--green-line);color:var(--green);background:var(--green-bg);}
+
+/* FORM */
+.form-panel{background:var(--panel);border:1px solid rgba(232,184,75,0.32);border-radius:10px;padding:28px;margin-bottom:26px;display:none;}
+.form-panel.visible{display:block;}
+.form-title{font-family:'Cinzel',serif;font-size:11px;letter-spacing:3px;color:var(--text3);text-transform:uppercase;margin-bottom:18px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+input,textarea,select{width:100%;background:var(--bg3);border:1px solid rgba(232,184,75,0.18);border-radius:6px;padding:12px 16px;color:var(--text);font-size:15px;font-family:'Crimson Pro',Georgia,serif;outline:none;transition:border-color 0.2s;-webkit-appearance:none;}
+input:focus,textarea:focus,select:focus{border-color:rgba(232,184,75,0.48);}
+input::placeholder,textarea::placeholder{color:var(--text4);}
+textarea{resize:vertical;min-height:90px;margin-bottom:14px;}
+select option{background:var(--bg3);color:var(--text);}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap;}
+.btn-primary{background:linear-gradient(135deg,#c99a30,#7a5518);border:none;color:#0e0b06;padding:12px 26px;font-family:'Cinzel',serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:6px;transition:opacity 0.2s,transform 0.1s;}
+.btn-primary:hover{opacity:0.88;}
+.btn-primary:active{transform:scale(0.98);}
+.btn-secondary{background:transparent;border:1px solid var(--gold-line);color:var(--text3);padding:12px 22px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:6px;transition:all 0.2s;}
+.btn-secondary:hover{border-color:rgba(232,184,75,0.4);color:var(--text2);}
+
+/* ANNOUNCEMENTS */
+.announce-list{display:flex;flex-direction:column;gap:16px;}
+.announce-card{background:var(--panel);border:1px solid var(--gold-line);border-left:4px solid rgba(232,184,75,0.18);border-radius:0 10px 10px 0;padding:24px 28px;transition:all 0.2s;display:flex;gap:24px;}
+.announce-card.urgent{border-left-color:var(--gold);background:linear-gradient(90deg,rgba(232,184,75,0.06),var(--panel));}
+.announce-card:hover{border-color:rgba(232,184,75,0.32);border-left-color:var(--gold2);}
+.announce-date-col{flex-shrink:0;width:68px;text-align:center;padding-top:2px;}
+.announce-date-day{font-family:'Cinzel',serif;font-size:30px;color:var(--gold2);line-height:1;font-weight:700;}
+.announce-date-mon{font-family:'Cinzel',serif;font-size:10px;color:var(--text4);letter-spacing:2px;text-transform:uppercase;}
+.announce-divider{width:1px;background:var(--gold-line);flex-shrink:0;}
+.announce-main{flex:1;min-width:0;}
+.announce-tags{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;}
+.tag-urgent{font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;background:rgba(232,184,75,0.15);color:var(--gold);padding:2px 10px;border-radius:20px;border:1px solid var(--gold-line);text-transform:uppercase;}
+.announce-title{font-size:20px;font-weight:600;color:var(--text);margin-bottom:8px;line-height:1.3;}
+.announce-body{font-size:15px;color:var(--text2);line-height:1.7;}
+
+/* CONNECT */
+.connect-strip{margin-top:30px;padding:18px 22px;border:1px dashed rgba(232,184,75,0.18);border-radius:8px;display:flex;align-items:center;gap:14px;color:var(--text4);font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;}
+.connect-icon{font-size:20px;opacity:0.45;}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--gold-line);border-radius:3px;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .sidebar{transform:translateX(-100%);}
+  .sidebar.open{transform:translateX(0);box-shadow:8px 0 40px rgba(0,0,0,0.65);}
+  .content{margin-left:0;}
+  .mobile-bar{display:flex;}
+  .home-hero{padding:48px 22px;min-height:360px;}
+  .home-cards{grid-template-columns:1fr;padding:24px 18px;}
+  .home-upcoming{padding:0 18px 30px;}
+  .page-header{padding:24px 18px;}
+  .page-body{padding:20px 18px;}
+  .member-grid{grid-template-columns:1fr;}
+  .prayer-grid{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .announce-card{flex-direction:column;gap:10px;padding:18px;}
+  .announce-date-col{display:flex;align-items:baseline;gap:6px;width:auto;text-align:left;}
+  .announce-date-day{font-size:20px;}
+  .announce-divider{display:none;}
+}
+@media(max-width:500px){
+  .hero-shield-big{width:80px;height:80px;font-size:30px;}
+  .hero-verse{font-size:16px;}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-shield">⚔️</div>
+    <div class="brand-title">COURAGEOUS</div>
+    <div class="brand-sub">Table 23 · Men's Group</div>
+  </div>
+  <nav class="sidebar-nav">
+    <button class="nav-item active" onclick="showPage('home',this)"><span class="nav-icon">🏠</span> Home</button>
+    <button class="nav-item" onclick="showPage('roster',this)"><span class="nav-icon">👥</span> Brothers</button>
+    <button class="nav-item" onclick="showPage('prayer',this)"><span class="nav-icon">🙏</span> Prayer Wall</button>
+    <button class="nav-item" onclick="showPage('announcements',this)"><span class="nav-icon">📣</span> Word Out</button>
+  </nav>
+  <div class="sidebar-footer">
+    "Be watchful, stand firm in the faith, act like men, be strong."<br><br>
+    <strong style="color:var(--text4);font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;">1 CORINTHIANS 16:13</strong>
+  </div>
+</aside>
+
+<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+<div class="content">
+  <div class="mobile-bar">
+    <span class="mobile-brand">COURAGEOUS · T23</span>
+    <button class="hamburger" onclick="toggleSidebar()">☰</button>
+  </div>
+
+  <!-- HOME -->
+  <div class="page active" id="page-home">
+    <div class="home-hero">
+      <div>
+        <div class="hero-shield-big">⚔️</div>
+        <div class="hero-title">COURAGEOUS</div>
+        <div class="hero-table">Table 23 · Men's Group</div>
+        <div class="hero-verse">"Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go."</div>
+        <div class="hero-ref" style="margin-top:12px;">— Joshua 1:9</div>
+      </div>
+    </div>
+    <div class="home-cards">
+      <div class="home-card" onclick="showPage('roster',document.querySelector('[onclick*=roster]'))">
+        <span class="home-card-icon">👥</span>
+        <div class="home-card-title">Brothers</div>
+        <div class="home-card-desc">Your men. Your table. The brothers who sharpen you.</div>
+        <div class="home-card-count" id="home-member-count">5 Men</div>
+      </div>
+      <div class="home-card" onclick="showPage('prayer',document.querySelector('[onclick*=prayer]'))">
+        <span class="home-card-icon">🙏</span>
+        <div class="home-card-title">Prayer Wall</div>
+        <div class="home-card-desc">Carry one another's burdens. See what God is doing.</div>
+        <div class="home-card-count" id="home-prayer-count">5 Requests</div>
+      </div>
+      <div class="home-card" onclick="showPage('announcements',document.querySelector('[onclick*=announcements]'))">
+        <span class="home-card-icon">📣</span>
+        <div class="home-card-title">Word Out</div>
+        <div class="home-card-desc">Stay connected. Don't miss what's coming up for the group.</div>
+        <div class="home-card-count" id="home-announce-count">4 Announcements</div>
+      </div>
+    </div>
+    <div class="home-upcoming">
+      <div class="section-title">Upcoming This Week</div>
+      <div id="upcoming-list"></div>
+    </div>
+  </div>
+
+  <!-- ROSTER -->
+  <div class="page" id="page-roster">
+    <div class="page-header">
+      <div>
+        <div class="page-title">Brothers</div>
+        <div class="page-sub" id="roster-sub">5 men at Table 23</div>
+      </div>
+    </div>
+    <div class="page-body">
+      <div class="member-grid" id="member-grid"></div>
+      <div class="connect-strip"><span class="connect-icon">🔗</span> Connect Google Sheet to sync member roster automatically</div>
+    </div>
+  </div>
+
+  <!-- PRAYER -->
+  <div class="page" id="page-prayer">
+    <div class="page-header">
+      <div>
+        <div class="page-title">Prayer Wall</div>
+        <div class="page-sub">"Pray for one another, that you may be healed." — James 5:16</div>
+      </div>
+      <button class="btn-primary" onclick="togglePrayerForm()">+ Add Request</button>
+    </div>
+    <div class="page-body">
+      <div class="form-panel" id="prayer-form">
+        <div class="form-title">Share Your Prayer Request</div>
+        <div class="form-row">
+          <input type="text" id="prayer-name" placeholder="Your name" />
+          <select id="prayer-category">
+            <option value="">Category (optional)</option>
+            <option>Family</option><option>Health</option><option>Marriage</option>
+            <option>Career</option><option>Salvation</option><option>Faith</option>
+            <option>Finances</option><option>Other</option>
+          </select>
+        </div>
+        <textarea id="prayer-text" placeholder="What can your brothers pray for you about?"></textarea>
+        <div class="btn-row">
+          <button class="btn-primary" onclick="submitPrayer()">Submit Request</button>
+          <button class="btn-secondary" onclick="togglePrayerForm()">Cancel</button>
+        </div>
+      </div>
+      <div class="prayer-grid" id="prayer-grid"></div>
+      <div class="connect-strip"><span class="connect-icon">🔗</span> Connect Google Sheet to save prayer requests permanently</div>
+    </div>
+  </div>
+
+  <!-- ANNOUNCEMENTS -->
+  <div class="page" id="page-announcements">
+    <div class="page-header">
+      <div>
+        <div class="page-title">Word Out</div>
+        <div class="page-sub">Everything happening with Table 23</div>
+      </div>
+    </div>
+    <div class="page-body">
+      <div class="announce-list" id="announce-list"></div>
+      <div class="connect-strip"><span class="connect-icon">🔗</span> Connect Google Sheet to post announcements live</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+const members=[
+  {name:"James Carter",initials:"JC",role:"Table Leader",verse:"Be strong and courageous. — Joshua 1:9",phone:"(555) 201-0001",birthday:"Mar 14"},
+  {name:"Marcus Williams",initials:"MW",role:"Member",verse:"Iron sharpens iron. — Proverbs 27:17",phone:"(555) 201-0002",birthday:"Jun 3"},
+  {name:"David Thompson",initials:"DT",role:"Member",verse:"I can do all things through Christ. — Phil 4:13",phone:"(555) 201-0003",birthday:"Nov 21"},
+  {name:"Robert Hayes",initials:"RH",role:"Member",verse:"Walk worthy of your calling. — Eph 4:1",phone:"(555) 201-0004",birthday:"Aug 7"},
+  {name:"Samuel Brooks",initials:"SB",role:"Member",verse:"Trust in the Lord with all your heart. — Prov 3:5",phone:"(555) 201-0005",birthday:"Jan 30"},
+];
+let prayers=[
+  {id:1,author:"James Carter",category:"Family",request:"Wisdom in leading my family through a difficult season.",date:"Mar 8",answered:false},
+  {id:2,author:"Marcus Williams",category:"Health",request:"My son's health — surgery next week. Believing for healing.",date:"Mar 9",answered:false},
+  {id:3,author:"David Thompson",category:"Career",request:"New job opportunity. Doors opening in the right direction.",date:"Mar 7",answered:true},
+  {id:4,author:"Robert Hayes",category:"Marriage",request:"Restoration in my marriage. We're working through some things.",date:"Mar 5",answered:false},
+  {id:5,author:"Samuel Brooks",category:"Salvation",request:"My father's salvation. Been praying for years.",date:"Mar 3",answered:false},
+];
+const announcements=[
+  {title:"Next Week: Guest Speaker",body:"Pastor Mike joining us to talk about Courageous Fatherhood. Don't miss it!",dateDay:"17",dateMon:"Mar",urgent:true},
+  {title:"Saturday Men's Breakfast",body:"7am at the church fellowship hall. Bring your appetite and a brother who needs community.",dateDay:"15",dateMon:"Mar",urgent:false},
+  {title:"Summer Retreat Registration Open",body:"July 18–20 at Eagle Ridge Camp. Early bird pricing ends April 1.",dateDay:"1",dateMon:"Jul",urgent:false},
+  {title:"New Study Series — 'The Warrior Within'",body:"6-week series starting March 24. Pick up your workbook at the church office.",dateDay:"24",dateMon:"Mar",urgent:false},
+];
+
+function renderMembers(){
+  document.getElementById('roster-sub').textContent=members.length+' men at Table 23';
+  document.getElementById('home-member-count').textContent=members.length+' Men';
+  document.getElementById('member-grid').innerHTML=members.map((m,i)=>`
+    <div class="member-card" id="mc-${i}" onclick="toggleMember(${i})">
+      <div class="mc-top">
+        <div class="avatar">${m.initials}</div>
+        <div>
+          <div class="mc-name">${m.name}${m.role==='Table Leader'?'<span class="leader-badge">Leader</span>':''}</div>
+          <div class="mc-role">${m.role}</div>
+        </div>
+      </div>
+      <div class="mc-expand">
+        <div class="mc-verse">"${m.verse}"</div>
+        <div class="mc-details">
+          <div class="mc-detail-item"><label>Phone</label><span>${m.phone}</span></div>
+          <div class="mc-detail-item"><label>Birthday</label><span>${m.birthday}</span></div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+function toggleMember(i){document.getElementById('mc-'+i).classList.toggle('open');}
+
+function renderPrayers(){
+  const active=prayers.filter(p=>!p.answered).length;
+  const ans=prayers.filter(p=>p.answered).length;
+  document.getElementById('home-prayer-count').textContent=active+' Active · '+ans+' Answered';
+  document.getElementById('prayer-grid').innerHTML=prayers.map(p=>`
+    <div class="prayer-card ${p.answered?'answered':''}">
+      <div class="prayer-top">
+        <div>
+          <div class="prayer-author">${p.author}</div>
+          <div class="prayer-date">${p.date}${p.category?' · '+p.category:''}</div>
+        </div>
+        ${p.answered?'<span class="answered-badge">✓ Answered</span>':''}
+      </div>
+      <p class="prayer-text">"${p.request}"</p>
+      <div class="prayer-actions">
+        <button class="answer-btn ${p.answered?'answered':''}" onclick="toggleAnswered(${p.id})">${p.answered?'✓ Answered':'○ Mark Answered'}</button>
+      </div>
+    </div>
+  `).join('');
+}
+function toggleAnswered(id){prayers=prayers.map(p=>p.id===id?{...p,answered:!p.answered}:p);renderPrayers();}
+let pfOpen=false;
+function togglePrayerForm(){pfOpen=!pfOpen;document.getElementById('prayer-form').classList.toggle('visible',pfOpen);if(pfOpen)setTimeout(()=>document.getElementById('prayer-name').focus(),100);}
+function submitPrayer(){
+  const name=document.getElementById('prayer-name').value.trim();
+  const text=document.getElementById('prayer-text').value.trim();
+  const cat=document.getElementById('prayer-category').value;
+  if(!name||!text){alert('Please fill in your name and prayer request.');return;}
+  const d=new Date();
+  prayers.unshift({id:Date.now(),author:name,category:cat||'',request:text,date:d.toLocaleDateString('en-US',{month:'short',day:'numeric'}),answered:false});
+  document.getElementById('prayer-name').value='';document.getElementById('prayer-text').value='';document.getElementById('prayer-category').value='';
+  togglePrayerForm();renderPrayers();
+}
+
+function renderAnnouncements(){
+  document.getElementById('home-announce-count').textContent=announcements.length+' Announcements';
+  document.getElementById('announce-list').innerHTML=announcements.map(a=>`
+    <div class="announce-card ${a.urgent?'urgent':''}">
+      <div class="announce-date-col"><div class="announce-date-day">${a.dateDay}</div><div class="announce-date-mon">${a.dateMon}</div></div>
+      <div class="announce-divider"></div>
+      <div class="announce-main">
+        <div class="announce-tags">${a.urgent?'<span class="tag-urgent">This Week</span>':''}</div>
+        <div class="announce-title">${a.title}</div>
+        <div class="announce-body">${a.body}</div>
+      </div>
+    </div>
+  `).join('');
+  const urgent=announcements.filter(a=>a.urgent);
+  document.getElementById('upcoming-list').innerHTML=urgent.length
+    ?urgent.map(a=>`<div class="upcoming-row"><div class="upcoming-dot urgent"></div><div><div class="upcoming-label">${a.dateMon} ${a.dateDay}</div><div class="upcoming-text">${a.title}</div></div></div>`).join('')
+    :'<div style="color:var(--text4);font-style:italic;font-size:14px;padding:14px 0;">Nothing urgent this week — check Word Out for all announcements.</div>';
+}
+
+function showPage(id,btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  if(btn)btn.classList.add('active');
+  closeSidebar();window.scrollTo(0,0);
+}
+function toggleSidebar(){document.getElementById('sidebar').classList.toggle('open');document.getElementById('overlay').classList.toggle('visible');}
+function closeSidebar(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('visible');}
+
+renderMembers();renderPrayers();renderAnnouncements();
+</script>
+</body>
+</html>
