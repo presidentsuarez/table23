@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Table 23 Courageous | Grace Family Church</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --charcoal: #1a1714;
+  --dark: #231f1b;
+  --warm-dark: #2c2620;
+  --leather: #3d3229;
+  --amber: #d4862a;
+  --amber-glow: #e6a040;
+  --copper: #b5693a;
+  --cream: #f5f0e8;
+  --sand: #c8b89a;
+  --muted: #8a7e72;
+  --success: #5a8a4a;
+  --red: #c0453a;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Barlow', sans-serif;
+  background: var(--charcoal);
+  color: var(--cream);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Grain texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Navigation */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: rgba(26, 23, 20, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(212, 134, 42, 0.15);
+  z-index: 1000;
+  padding: 0 1.5rem;
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.nav-logo {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--amber);
+}
+
+.nav-logo span { color: var(--cream); }
+
+.nav-links { display: flex; gap: 0.25rem; }
+
+.nav-links a {
+  color: var(--sand);
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.nav-links a:hover { color: var(--amber); background: rgba(212, 134, 42, 0.08); }
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--amber);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Hero */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 1.5rem 4rem;
+  position: relative;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(212, 134, 42, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 30%, rgba(181, 105, 58, 0.04) 0%, transparent 50%),
+    var(--charcoal);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 200px;
+  background: linear-gradient(to bottom, transparent, var(--charcoal));
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--amber);
+  border: 1px solid rgba(212, 134, 42, 0.3);
+  padding: 0.5rem 1.5rem;
+  border-radius: 2px;
+  margin-bottom: 2rem;
+}
+
+.hero h1 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: clamp(3rem, 10vw, 6rem);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.hero h1 .accent { color: var(--amber); }
+
+.hero .table-num {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 400;
+  color: var(--sand);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.hero .tagline {
+  font-size: 1.1rem;
+  color: var(--muted);
+  max-width: 500px;
+  margin: 0 auto 2.5rem;
+  font-weight: 300;
+}
+
+.hero-verse {
+  font-style: italic;
+  color: var(--sand);
+  font-size: 0.95rem;
+  max-width: 400px;
+  margin: 0 auto;
+  opacity: 0.7;
+  line-height: 1.5;
+}
+
+.hero-verse cite {
+  display: block;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--amber);
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  letter-spacing: 1px;
+}
+
+/* Section styles */
+.section {
+  padding: 5rem 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(to right, var(--amber), transparent);
+  margin-bottom: 1rem;
+}
+
+.section-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--amber);
+  margin-bottom: 0.5rem;
+}
+
+.section h2 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.section-desc {
+  color: var(--muted);
+  font-size: 1rem;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+}
+
+/* Devotional section */
+.devo-card {
+  background: var(--dark);
+  border: 1px solid rgba(212, 134, 42, 0.12);
+  border-radius: 8px;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.devo-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--amber), var(--copper), transparent);
+}
+
+.devo-week {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--amber);
+  margin-bottom: 1rem;
+}
+
+.devo-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.devo-scripture {
+  color: var(--copper);
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.devo-body {
+  color: var(--sand);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.devo-questions h4 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--amber);
+  margin-bottom: 1rem;
+}
+
+.devo-questions ol {
+  color: var(--sand);
+  padding-left: 1.25rem;
+}
+
+.devo-questions li {
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+/* Prayer Wall */
+.prayer-grid {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.prayer-card {
+  background: var(--dark);
+  border: 1px solid rgba(212, 134, 42, 0.08);
+  border-radius: 6px;
+  padding: 1.5rem;
+  border-left: 3px solid var(--amber);
+  transition: transform 0.2s;
+}
+
+.prayer-card:hover { transform: translateY(-2px); }
+
+.prayer-card.answered {
+  border-left-color: var(--success);
+  opacity: 0.7;
+}
+
+.prayer-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.prayer-author {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.prayer-date {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.prayer-text {
+  color: var(--sand);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.prayer-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+  margin-top: 0.75rem;
+}
+
+.prayer-badge.active { background: rgba(212, 134, 42, 0.15); color: var(--amber); }
+.prayer-badge.answered { background: rgba(90, 138, 74, 0.15); color: var(--success); }
+
+/* Forms */
+.form-card {
+  background: var(--dark);
+  border: 1px solid rgba(212, 134, 42, 0.12);
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.form-group { margin-bottom: 1.25rem; }
+
+.form-label {
+  display: block;
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--sand);
+  margin-bottom: 0.4rem;
+}
+
+.form-input, .form-textarea, .form-select {
+  width: 100%;
+  background: var(--charcoal);
+  border: 1px solid rgba(200, 184, 154, 0.15);
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  color: var(--cream);
+  font-family: 'Barlow', sans-serif;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+  outline: none;
+  border-color: var(--amber);
+}
+
+.form-textarea { min-height: 100px; resize: vertical; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.btn-primary {
+  background: var(--amber);
+  color: var(--charcoal);
+}
+
+.btn-primary:hover { background: var(--amber-glow); transform: translateY(-1px); }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--amber);
+  border: 1px solid var(--amber);
+}
+
+.btn-secondary:hover { background: rgba(212, 134, 42, 0.1); }
+
+/* Events */
+.event-list { display: grid; gap: 1rem; }
+
+.event-card {
+  background: var(--dark);
+  border: 1px solid rgba(212, 134, 42, 0.08);
+  border-radius: 6px;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  transition: transform 0.2s;
+}
+
+.event-card:hover { transform: translateY(-2px); }
+
+.event-date-box {
+  flex-shrink: 0;
+  text-align: center;
+  background: rgba(212, 134, 42, 0.08);
+  border: 1px solid rgba(212, 134, 42, 0.15);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  min-width: 65px;
+}
+
+.event-month {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--amber);
+}
+
+.event-day {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1;
+}
+
+.event-info h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.25rem;
+}
+
+.event-detail {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+
+.event-rsvp {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.rsvp-btn {
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.4rem 1rem;
+  border: 1px solid rgba(212, 134, 42, 0.3);
+  background: transparent;
+  color: var(--sand);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.rsvp-btn:hover, .rsvp-btn.active {
+  background: var(--amber);
+  color: var(--charcoal);
+  border-color: var(--amber);
+}
+
+.rsvp-btn.decline:hover, .rsvp-btn.decline.active {
+  background: var(--red);
+  border-color: var(--red);
+  color: var(--cream);
+}
+
+.rsvp-count {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* Accountability */
+.checkin-card {
+  background: var(--dark);
+  border: 1px solid rgba(212, 134, 42, 0.12);
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.checkin-scale {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.scale-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(200, 184, 154, 0.2);
+  background: var(--charcoal);
+  color: var(--sand);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.scale-btn:hover, .scale-btn.active {
+  background: var(--amber);
+  color: var(--charcoal);
+  border-color: var(--amber);
+}
+
+.scale-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+}
+
+/* Directory */
+.member-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.member-card {
+  background: var(--dark);
+  border: 1px solid rgba(212, 134, 42, 0.08);
+  border-radius: 6px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.member-card:hover { transform: translateY(-2px); }
+
+.member-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--amber), var(--copper));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--charcoal);
+}
+
+.member-name {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.25rem;
+}
+
+.member-role {
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.member-contact {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--sand);
+}
+
+.member-contact a {
+  color: var(--amber);
+  text-decoration: none;
+}
+
+.member-contact a:hover { text-decoration: underline; }
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  border-top: 1px solid rgba(212, 134, 42, 0.08);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.footer .logo {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--amber);
+  margin-bottom: 0.5rem;
+}
+
+/* Toast notification */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--success);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  z-index: 10000;
+  transition: transform 0.3s ease;
+  white-space: nowrap;
+}
+
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* Background section accents */
+#prayers { background: var(--dark); border-radius: 0; padding-top: 5rem; padding-bottom: 5rem; max-width: 100%; }
+#prayers .section-inner { max-width: 900px; margin: 0 auto; }
+#checkin { background: var(--charcoal); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: rgba(26, 23, 20, 0.98);
+    padding: 1rem;
+    border-bottom: 1px solid rgba(212, 134, 42, 0.15);
+  }
+  .hamburger { display: block; }
+  .event-card { flex-direction: column; }
+  .member-grid { grid-template-columns: repeat(2, 1fr); }
+  .section { padding: 3.5rem 1.25rem; }
+  .devo-card { padding: 1.5rem; }
+  .hero h1 { letter-spacing: 1px; }
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.fade-in:nth-child(2) { animation-delay: 0.1s; }
+.fade-in:nth-child(3) { animation-delay: 0.2s; }
+.fade-in:nth-child(4) { animation-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Table <span>23</span></div>
+    <div class="nav-links" id="navLinks">
+      <a href="#devotional">Word</a>
+      <a href="#prayers">Prayers</a>
+      <a href="#events">Events</a>
+      <a href="#checkin">Check-in</a>
+      <a href="#brothers">Brothers</a>
+    </div>
+    <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div>
+    <div class="hero-badge fade-in">Grace Family Church</div>
+    <h1 class="fade-in"><span class="accent">Courageous</span></h1>
+    <div class="table-num fade-in">Table 23</div>
+    <p class="tagline fade-in">Iron sharpens iron. A brotherhood built on faith, accountability, and showing up for each other.</p>
+    <div class="hero-verse fade-in">
+      "Be on your guard; stand firm in the faith; be courageous; be strong. Do everything in love."
+      <cite>1 Corinthians 16:13-14</cite>
+    </div>
+  </div>
+</section>
+
+<!-- Weekly Devotional -->
+<section class="section" id="devotional">
+  <div class="section-divider"></div>
+  <div class="section-label">This Week</div>
+  <h2>The Word</h2>
+  <p class="section-desc">Weekly discussion topic to dig into before we meet. Come ready.</p>
+
+  <div class="devo-card">
+    <div class="devo-week">Week of March 16, 2026</div>
+    <div class="devo-title">The Cost of Comfort</div>
+    <div class="devo-scripture">📖 Joshua 1:9 &nbsp;|&nbsp; Proverbs 27:17</div>
+    <div class="devo-body">
+      It's easy to cruise. Show up to work, come home, repeat. But God didn't call us to be comfortable — He called us to be courageous. This week we're digging into what it looks like to step out of autopilot and actually lead in the areas that matter: your home, your faith, your relationships.
+    </div>
+    <div class="devo-questions">
+      <h4>Discussion Questions</h4>
+      <ol>
+        <li>Where in your life are you playing it safe right now? What would courage look like there?</li>
+        <li>What's one area where you need another man to call you up, not just comfort you?</li>
+        <li>Read Joshua 1:9 — what does "the Lord your God will be with you wherever you go" change about how you approach this week?</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- Prayer Wall -->
+<section id="prayers">
+  <div class="section-inner">
+    <div class="section-divider"></div>
+    <div class="section-label">Lift Each Other Up</div>
+    <h2 style="font-family:'Oswald',sans-serif;font-weight:700;font-size:2.2rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:0.5rem;">Prayer Wall</h2>
+    <p class="section-desc">What you share here stays here. Be real. Be specific. Pray for your brothers.</p>
+
+    <div class="prayer-grid">
+      <div class="prayer-card fade-in">
+        <div class="prayer-meta">
+          <span class="prayer-author">Marcus T.</span>
+          <span class="prayer-date">Mar 15</span>
+        </div>
+        <div class="prayer-text">Job situation is getting real. Interview next Thursday for the position I've been praying about. Need clarity and peace going in.</div>
+        <span class="prayer-badge active">🔥 Active</span>
+      </div>
+
+      <div class="prayer-card fade-in">
+        <div class="prayer-meta">
+          <span class="prayer-author">David R.</span>
+          <span class="prayer-date">Mar 14</span>
+        </div>
+        <div class="prayer-text">My dad's health isn't great. Going through some tests this week. Praying for good results but also for me to be present for my family through it.</div>
+        <span class="prayer-badge active">🔥 Active</span>
+      </div>
+
+      <div class="prayer-card fade-in">
+        <div class="prayer-meta">
+          <span class="prayer-author">Chris W.</span>
+          <span class="prayer-date">Mar 10</span>
+        </div>
+        <div class="prayer-text">Marriage has been in a good season. Praising God for that. Praying it continues and that I don't get lazy.</div>
+        <span class="prayer-badge active">🔥 Active</span>
+      </div>
+
+      <div class="prayer-card answered fade-in">
+        <div class="prayer-meta">
+          <span class="prayer-author">Jason M.</span>
+          <span class="prayer-date">Mar 3</span>
+        </div>
+        <div class="prayer-text">Son got accepted into the program. God is good. Thanks for praying with me on this one, brothers.</div>
+        <span class="prayer-badge answered">✓ Answered</span>
+      </div>
+    </div>
+
+    <!-- Submit prayer form -->
+    <div class="form-card">
+      <h3 style="font-family:'Oswald',sans-serif;font-size:1.1rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:1.25rem;color:var(--cream);">Submit a Prayer Request</h3>
+      <div class="form-group">
+        <label class="form-label">Your Name</label>
+        <input type="text" class="form-input" placeholder="First name + last initial" id="prayerName">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Prayer Request</label>
+        <textarea class="form-textarea" placeholder="Be honest. This is a safe space." id="prayerText"></textarea>
+      </div>
+      <button class="btn btn-primary" onclick="submitPrayer()">Submit Request</button>
+    </div>
+  </div>
+</section>
+
+<!-- Events -->
+<section class="section" id="events">
+  <div class="section-divider"></div>
+  <div class="section-label">Don't Miss It</div>
+  <h2>Upcoming</h2>
+  <p class="section-desc">Mark your calendar. Show up. That's half the battle.</p>
+
+  <div class="event-list">
+    <div class="event-card fade-in">
+      <div class="event-date-box">
+        <div class="event-month">Mar</div>
+        <div class="event-day">19</div>
+      </div>
+      <div class="event-info">
+        <h3>Weekly Table Meeting</h3>
+        <div class="event-detail">📍 Grace Family Church, Room 204 &nbsp;·&nbsp; ⏰ 7:00 PM</div>
+        <div class="event-rsvp">
+          <button class="rsvp-btn" onclick="rsvp(this, 'in')">I'm In</button>
+          <button class="rsvp-btn decline" onclick="rsvp(this, 'out')">Can't Make It</button>
+          <span class="rsvp-count">5 going</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-card fade-in">
+      <div class="event-date-box">
+        <div class="event-month">Mar</div>
+        <div class="event-day">22</div>
+      </div>
+      <div class="event-info">
+        <h3>Saturday Morning Hike</h3>
+        <div class="event-detail">📍 Hillsborough River State Park &nbsp;·&nbsp; ⏰ 7:30 AM</div>
+        <div class="event-rsvp">
+          <button class="rsvp-btn" onclick="rsvp(this, 'in')">I'm In</button>
+          <button class="rsvp-btn decline" onclick="rsvp(this, 'out')">Can't Make It</button>
+          <span class="rsvp-count">3 going</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-card fade-in">
+      <div class="event-date-box">
+        <div class="event-month">Apr</div>
+        <div class="event-day">5</div>
+      </div>
+      <div class="event-info">
+        <h3>Men's Group Cookout</h3>
+        <div class="event-detail">📍 TBD — someone's backyard &nbsp;·&nbsp; ⏰ 5:00 PM</div>
+        <div class="event-rsvp">
+          <button class="rsvp-btn" onclick="rsvp(this, 'in')">I'm In</button>
+          <button class="rsvp-btn decline" onclick="rsvp(this, 'out')">Can't Make It</button>
+          <span class="rsvp-count">2 going</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Accountability Check-in -->
+<section class="section" id="checkin">
+  <div class="section-divider"></div>
+  <div class="section-label">Be Honest</div>
+  <h2>Weekly Check-In</h2>
+  <p class="section-desc">Quick pulse check before we meet. No judgment — just real talk.</p>
+
+  <div class="checkin-card">
+    <div class="form-group">
+      <label class="form-label">Your Name</label>
+      <input type="text" class="form-input" placeholder="First name" id="checkinName">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">How are you doing spiritually this week?</label>
+      <div class="checkin-scale" id="scaleSpiritual">
+        <button class="scale-btn" onclick="setScale(this)">1</button>
+        <button class="scale-btn" onclick="setScale(this)">2</button>
+        <button class="scale-btn" onclick="setScale(this)">3</button>
+        <button class="scale-btn" onclick="setScale(this)">4</button>
+        <button class="scale-btn" onclick="setScale(this)">5</button>
+        <button class="scale-btn" onclick="setScale(this)">6</button>
+        <button class="scale-btn" onclick="setScale(this)">7</button>
+        <button class="scale-btn" onclick="setScale(this)">8</button>
+        <button class="scale-btn" onclick="setScale(this)">9</button>
+        <button class="scale-btn" onclick="setScale(this)">10</button>
+      </div>
+      <div class="scale-labels"><span>Struggling</span><span>On Fire</span></div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">How are you showing up at home?</label>
+      <div class="checkin-scale" id="scaleHome">
+        <button class="scale-btn" onclick="setScale(this)">1</button>
+        <button class="scale-btn" onclick="setScale(this)">2</button>
+        <button class="scale-btn" onclick="setScale(this)">3</button>
+        <button class="scale-btn" onclick="setScale(this)">4</button>
+        <button class="scale-btn" onclick="setScale(this)">5</button>
+        <button class="scale-btn" onclick="setScale(this)">6</button>
+        <button class="scale-btn" onclick="setScale(this)">7</button>
+        <button class="scale-btn" onclick="setScale(this)">8</button>
+        <button class="scale-btn" onclick="setScale(this)">9</button>
+        <button class="scale-btn" onclick="setScale(this)">10</button>
+      </div>
+      <div class="scale-labels"><span>Checked Out</span><span>All In</span></div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">What's your biggest win this week?</label>
+      <input type="text" class="form-input" placeholder="Even a small one counts" id="checkinWin">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">What's weighing on you?</label>
+      <textarea class="form-textarea" placeholder="Keep it real" id="checkinStruggle" style="min-height:80px;"></textarea>
+    </div>
+
+    <button class="btn btn-primary" onclick="submitCheckin()">Submit Check-In</button>
+  </div>
+</section>
+
+<!-- Brothers / Directory -->
+<section class="section" id="brothers" style="background:var(--dark);max-width:100%;border-radius:0;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="section-divider"></div>
+    <div class="section-label">The Brotherhood</div>
+    <h2>Table 23</h2>
+    <p class="section-desc">These are your guys. Reach out. Check in. Don't wait until Wednesday.</p>
+
+    <div class="member-grid">
+      <div class="member-card fade-in">
+        <div class="member-avatar">YN</div>
+        <div class="member-name">Your Name</div>
+        <div class="member-role">Table Leader</div>
+        <div class="member-contact"><a href="tel:">Call / Text</a></div>
+      </div>
+      <div class="member-card fade-in">
+        <div class="member-avatar">MT</div>
+        <div class="member-name">Marcus T.</div>
+        <div class="member-role">Member</div>
+        <div class="member-contact"><a href="tel:">Call / Text</a></div>
+      </div>
+      <div class="member-card fade-in">
+        <div class="member-avatar">DR</div>
+        <div class="member-name">David R.</div>
+        <div class="member-role">Member</div>
+        <div class="member-contact"><a href="tel:">Call / Text</a></div>
+      </div>
+      <div class="member-card fade-in">
+        <div class="member-avatar">CW</div>
+        <div class="member-name">Chris W.</div>
+        <div class="member-role">Member</div>
+        <div class="member-contact"><a href="tel:">Call / Text</a></div>
+      </div>
+      <div class="member-card fade-in">
+        <div class="member-avatar">JM</div>
+        <div class="member-name">Jason M.</div>
+        <div class="member-role">Member</div>
+        <div class="member-contact"><a href="tel:">Call / Text</a></div>
+      </div>
+      <div class="member-card fade-in">
+        <div class="member-avatar">BK</div>
+        <div class="member-name">Brian K.</div>
+        <div class="member-role">Member</div>
+        <div class="member-contact"><a href="tel:">Call / Text</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="logo">Table 23 · Courageous</div>
+  <p>Grace Family Church · Men's Group</p>
+  <p style="margin-top:0.5rem;font-size:0.75rem;color:var(--leather);">Be strong. Be courageous. Show up.</p>
+</footer>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// Toast notification
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// Scale buttons
+function setScale(btn) {
+  const parent = btn.parentElement;
+  parent.querySelectorAll('.scale-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// RSVP
+function rsvp(btn, type) {
+  const container = btn.parentElement;
+  container.querySelectorAll('.rsvp-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  showToast(type === 'in' ? "You're in! 💪" : "No worries — next time.");
+}
+
+// Submit prayer
+function submitPrayer() {
+  const name = document.getElementById('prayerName').value;
+  const text = document.getElementById('prayerText').value;
+  if (!name || !text) { showToast('Fill in both fields, brother.'); return; }
+
+  // TODO: Connect to Google Sheets via Google Forms or Apps Script
+  // For now, show success and add to page
+  const grid = document.querySelector('.prayer-grid');
+  const card = document.createElement('div');
+  card.className = 'prayer-card fade-in';
+  card.innerHTML = `
+    <div class="prayer-meta">
+      <span class="prayer-author">${name}</span>
+      <span class="prayer-date">Just now</span>
+    </div>
+    <div class="prayer-text">${text}</div>
+    <span class="prayer-badge active">🔥 Active</span>
+  `;
+  grid.insertBefore(card, grid.firstChild);
+  setTimeout(() => card.style.opacity = 1, 50);
+
+  document.getElementById('prayerName').value = '';
+  document.getElementById('prayerText').value = '';
+  showToast('Prayer submitted. We got you. 🙏');
+}
+
+// Submit check-in
+function submitCheckin() {
+  const name = document.getElementById('checkinName').value;
+  if (!name) { showToast('Put your name in, man.'); return; }
+
+  // TODO: Connect to Google Sheets via Google Forms or Apps Script
+  showToast('Check-in submitted. See you Wednesday. 💪');
+  document.getElementById('checkinName').value = '';
+  document.getElementById('checkinWin').value = '';
+  document.getElementById('checkinStruggle').value = '';
+  document.querySelectorAll('.checkin-scale .scale-btn').forEach(b => b.classList.remove('active'));
+}
+
+// Simple scroll animation
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => {
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>
